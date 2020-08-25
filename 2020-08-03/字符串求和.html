@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <pre>
+给定两个字符串形式的非负整数 num1 和num2 ，计算它们的和。
+提示：
+num1 和num2 的长度都小于 5100
+num1 和num2 都只包含数字 0-9
+num1 和num2 都不包含任何前导零
+你不能使用任何內建 BigInteger 库， 也不能直接将输入的字符串转换为整数形式
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/add-strings
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+</pre>
+    <!-- <script>
+        var addStrings = function (num1, num2) {
+            const n1_length = num1.length
+            const n2_length = num2.length
+            let c_num = n1_length - n2_length
+            const abs_c_num = Math.abs(c_num)
+            let b_c = ''
+            for (let i = 0; i < abs_c_num; i++) {
+                b_c += '0'
+            }
+            switch (true) {
+                case (c_num < 0):
+                    num1 = b_c + num1
+                    break
+                case (c_num > 0):
+                    num2 = b_c + num2
+                    break
+            }
+            let temp = 0, res = '', i = num1.length - 1
+            for (i; i >= 0; i--) {
+                const n1 = num1[i] * 1
+                const n2 = num2[i] * 1
+                let reduce = n1 + n2 + temp
+                if (reduce >= 10) {
+                    temp = 1
+                    reduce -= 10
+                } else {
+                    temp = 0
+                }
+                res = reduce + res
+            }
+            return temp === 0 ? res : temp + res
+        };
+    </script> -->
+    <script>
+        var addStrings = function (num1, num2) {
+            const n1_length = num1.length
+            const n2_length = num2.length
+            const f_len = Math.max(n1_length, n2_length)
+            let temp = 0, res = '', i = 1
+            for (i; i <= f_len; i++) {
+                let n1 = num1.substr(-i,1) * 1
+                let n2 = num2.substr(-i,1) * 1
+                if (i > n1_length) {
+                    n1 = 0
+                }
+                if (i > n2_length) {
+                    n2 = 0
+                }
+                console.log(n1, n2)
+                let reduce = n1 + n2 + temp
+                if (reduce >= 10) {
+                    temp = 1
+                    reduce -= 10
+                } else {
+                    temp = 0
+                }
+                res = reduce + res
+            }
+            return temp === 0 ? res : temp + res
+        };
+    </script>
+</body>
+
+</html>
